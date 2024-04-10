@@ -3,7 +3,7 @@ package main
 import (
 	"fmt"
 	"flag"
-	"GoFinance/src/Reader"
+	"GoFinance/Reader"
 )
 
 func main() {
@@ -27,3 +27,6 @@ func showTransactions(th Reader.TransactionHistory) {
 	} 
 }
 
+func createDataSet(th Reader.TransactionHistory) {
+	// TODO: Create dataset map from the transaction history
+}
