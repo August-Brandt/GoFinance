@@ -9,15 +9,14 @@ import (
 	"github.com/gocarina/gocsv"
 )
 
-type TransactionHistory struct {
-	Transactions []Transaction
-}
-
 type Transaction struct {
-	Amount      float32 `csv:"amount"`
-	Description string  `csv:"description"`
-	Type        string  `csv:"type"`
-	Subtype     string  `csv:"subtype"`
+	Amount      float32 `csv:"Beløb"`
+	Description string  `csv:"Tekst"`
+	Type        string  `csv:"Hovedkategori"`
+	Subtype     string  `csv:"Kategori"`
+	Comment string `csv:"Kommentar"`
+	Balance float32 `csv:"Saldo"`
+	Date string `csv:"Dato"`
 }
 
 func check(e error) {
@@ -26,7 +25,10 @@ func check(e error) {
 	}
 }
 
-func ReadTransactions(filePath string) TransactionHistory {
+func ReadTransactions(filePath string) []Transaction {
+	// TODO: Find a way for the reader to correctly parse floats
+	// with formats like: x.xxx,xx
+
 	// Set up reader
 	gocsv.SetCSVReader(func(in io.Reader) gocsv.CSVReader {
 		r := csv.NewReader(in)
@@ -43,7 +45,5 @@ func ReadTransactions(filePath string) TransactionHistory {
 	err = gocsv.UnmarshalFile(csvFile, &transactions)
 	check(err)
 
-	return TransactionHistory{
-		Transactions: transactions,
-	}
+	return transactions
 }
