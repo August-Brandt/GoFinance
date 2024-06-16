@@ -3,7 +3,7 @@ package main
 import (
 	"fmt"
 	"flag"
-	"GoFinance/Reader"
+	"GoFinance/reader"
 )
 
 func main() {
@@ -16,11 +16,11 @@ func main() {
 
 	fmt.Println("File is: " + *file)
 	
-	transactionHistory := Reader.ReadTransactions(*file)
+	transactionHistory := reader.ReadTransactions(*file)
 	showTransactions(transactionHistory)
 }
 
-func showTransactions(th []Reader.Transaction) {
+func showTransactions(th []reader.Transaction) {
 	for i, transaction := range th {
 		fmt.Printf("Transaction %d\n" + 
 					"\tAmount: %f\n" + 
@@ -42,6 +42,6 @@ func showTransactions(th []Reader.Transaction) {
 	} 
 }
 
-func createDataSet(th Reader.Transaction) {
+func createDataSet(th reader.Transaction) {
 	// TODO: Create dataset map from the transaction history
 }
