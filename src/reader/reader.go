@@ -31,7 +31,7 @@ func check(e error) {
 
 func normalizeCsvFile(path string) error {
 	// Change floating point numbers in csv file to be
-	// formatted like: xxxx.xx instead of x.xxx,xx
+	// formatted like: "xxxx.xx" instead of "x.xxx,xx"
 
 	file, err := os.Open(path)
 	if err != nil {
