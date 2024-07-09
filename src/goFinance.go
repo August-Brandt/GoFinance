@@ -7,6 +7,7 @@ import (
 )
 
 func main() {
+	// Set up flags
 	file := flag.String("file", "unset", "Path to the csv file with transaction history")
 	flag.Parse()
 	
